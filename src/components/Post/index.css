@@ -1,0 +1,14 @@
+section {
+  margin-top: 4px;
+  padding: 3px 5px;
+  border-bottom: 1px solid #c3ccc3;
+}
+
+h2 {
+  margin: 2px 0px;
+}
+
+p {
+  max-width: 400px;
+  margin: 4px 0px;
+}
