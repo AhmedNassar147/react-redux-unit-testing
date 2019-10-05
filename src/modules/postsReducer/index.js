@@ -2,6 +2,7 @@ import { GET_POSTS, GET_POSTS_FINISHED } from "../types";
 
 const initialState = {
   loading: false,
+  noData: false,
   posts: []
 };
 
@@ -17,7 +18,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        posts: [...state.posts, ...action.posts]
+        noData: !action.posts || (action.posts && !action.posts.length),
+        posts: action.posts
       };
 
     default:

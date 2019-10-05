@@ -1,4 +1,3 @@
-// import { shallow } from 'enzyme';
 import { GET_POSTS, GET_POSTS_FINISHED } from "../types";
 import postsReducer from "./index";
 
@@ -7,6 +6,7 @@ describe("Post Reducer Tests", () => {
     const newState = postsReducer(undefined, {});
     expect(newState).toEqual({
       loading: false,
+      noData: false,
       posts: []
     });
   });
@@ -15,6 +15,7 @@ describe("Post Reducer Tests", () => {
     const newState = postsReducer(undefined, { type: GET_POSTS });
     expect(newState).toEqual({
       loading: true,
+      noData: false,
       posts: []
     });
   });
@@ -42,6 +43,7 @@ describe("Post Reducer Tests", () => {
 
     expect(newState).toEqual({
       loading: false,
+      noData: !posts || (posts && !posts.length),
       posts: posts
     });
   });
