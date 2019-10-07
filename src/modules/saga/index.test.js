@@ -3,9 +3,6 @@ import postsSaga, { getRequest, requestPosts } from "./index";
 import { getPostsFinished } from "../actions";
 import { GET_POSTS } from "../types";
 
-// import { LOAD_REPOS } from 'containers/App/constants';
-// import { reposLoaded, repoLoadingError } from 'containers/App/actions';
-
 const posts = [{ id: 1, title: "title" }];
 
 describe("getPosts Saga tests", () => {
