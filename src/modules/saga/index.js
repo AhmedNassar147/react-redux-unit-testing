@@ -1,8 +1,8 @@
 import { all, takeLatest, put, select } from "redux-saga/effects";
-import { GET_POSTS } from "./types";
-import { getPostsFinished } from "./actions";
+import { GET_POSTS } from "../types";
+import { getPostsFinished } from "../actions";
 
-const getRequest = async limit => {
+export const getRequest = async limit => {
   let response = await fetch(
     `https://jsonplaceholder.typicode.com/posts?limit=${limit}`
   );
@@ -10,11 +10,11 @@ const getRequest = async limit => {
   return response;
 };
 
-const postsSelector = ({ posts }) => posts;
+export const postsSelector = ({ posts }) => posts;
 
-function* requestPosts() {
+export function* requestPosts() {
   try {
-    const { posts } = select(postsSelector);
+    const { posts } = yield select(postsSelector);
     const limit = posts && posts.length ? posts.length + 10 : 10;
     const newPosts = yield getRequest(limit);
     yield put(getPostsFinished(newPosts || []));
